@@ -3,14 +3,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout, authenticate, login
 
 # Create your views here.
-def index(request):
-    return render (request, 'index.html')
+
 
 def loginUser(request):
     if request.method=="POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(username, password)
 
         # check if user has entered correct credentials
         user = authenticate(username=username, password=password)
@@ -18,7 +16,8 @@ def loginUser(request):
         if user is not None:
             # A backend authenticated the credentials
             login(request, user)
-            return redirect("/home")
+            return redirect ('/home')
+
 
         else:
             # No backend authenticated the credentials
@@ -27,5 +26,7 @@ def loginUser(request):
     return render(request, 'login.html')
 
 def logoutUser(request):
-    logout(request)
-    return redirect("")
+    if request.user.is_authenticated:
+        logout(request)
+        return redirect ("")
+    

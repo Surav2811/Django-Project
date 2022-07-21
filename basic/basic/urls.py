@@ -25,9 +25,11 @@ admin.site.index_title = "Welcome to Saurav's Fruit Store"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/',include ('login.urls')),
+    path('logout/',include ('login.urls')),
     path('',include ('home.urls')),
     path('register/',include ('register.urls')),
     path('api/', include('api.urls')),
+    
 
     
     

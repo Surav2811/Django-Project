@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render
 from home.models import Contact
 from datetime import datetime
 from django.contrib import messages

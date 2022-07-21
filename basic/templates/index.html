@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}Home{% endblock title %}
+{% if user.is_anonymous %}
+<strong> Hi {{ user.username }}!</strong>
+{% else %}
+ <p>You are not logged in</p>
+ <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
 
 {% block body %}
 <div class="container-fluid px-0 mx=4">
